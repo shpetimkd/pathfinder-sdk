@@ -6,10 +6,10 @@ export class PathFinder extends Base {
 //     return this.request(`/${resourceName}/${id}`);
 //   }
 
-  getPath(newPost: any): Promise<any> {
-    return this.request(`/${resourceName}`, {
-      method: 'POST',
-      body: JSON.stringify(newPost),
-    });
+  getPath(newPost: any): any {
+    return {
+      api: 'hhhmm',
+      another: 'gmmm',
+    }
   }
 }
