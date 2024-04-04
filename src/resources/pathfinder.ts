@@ -1,5 +1,5 @@
 import { Base } from './base';
-const resourceName = 'posts';
+const resourceName = 'pathfinder';
 
 export class PathFinder extends Base {
 //   getPostById(id: number): Promise<any> {
