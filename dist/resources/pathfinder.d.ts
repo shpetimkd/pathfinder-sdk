@@ -1,4 +1,4 @@
 import { Base } from './base';
 export declare class PathFinder extends Base {
-    getPath(newPost: any): Promise<any>;
+    getPath(newPost: any): any;
 }
