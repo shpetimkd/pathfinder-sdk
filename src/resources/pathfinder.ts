@@ -3,20 +3,26 @@ const resourceName = "status";
 import axios from "axios";
 
 export class PathFinder extends Base {
+  private readonly config: any;
+  constructor(config: { apiKey: string; httpClient?: string }) {
+    super(config);
+    this.config = config;
+  }
   //   getPostById(id: number): Promise<any> {
   //     return this.request(`/${resourceName}/${id}`);
   //   }
 
   getPath(): any {
-    axios
-      .get('http://localhost:4000/status', {
-        headers: {
-          Cookie: "cookie1=value; cookie2=value; cookie3=value;",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      });
+    return this.config;
+    // axios
+    //   .get('http://localhost:4000/status', {
+    //     headers: {
+    //       Cookie: "cookie1=value; cookie2=value; cookie3=value;",
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
     // return fetch('http://localhost:4000/status', {
     //   credentials: 'include',
     //   mode: 'cors',
