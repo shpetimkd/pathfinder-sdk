@@ -8,7 +8,8 @@ export class PathFinder extends Base {
 
   getPath(): any {
     return fetch('http://localhost:4000/status', {
-      credentials: 'include'
+      credentials: 'include',
+      mode: 'cors',
     }).then(response => response.json());
   }
 }
