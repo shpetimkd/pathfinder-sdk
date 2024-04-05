@@ -6,10 +6,9 @@ export class PathFinder extends Base {
 //     return this.request(`/${resourceName}/${id}`);
 //   }
 
-  getPath(newPost: any): any {
-    return {
-      api: 'hhhmm',
-      another: 'gmmm',
-    }
+  getPath(): any {
+    return fetch('http://localhost:4000/status', {
+      credentials: 'include'
+    }).then(response => response.json());
   }
 }
