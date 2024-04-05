@@ -3,17 +3,12 @@ const resourceName = "status";
 import axios from "axios";
 
 export class PathFinder extends Base {
-  private readonly config: any;
-  constructor(config: { apiKey: string; httpClient?: string }) {
-    super(config);
-    this.config = config;
-  }
   //   getPostById(id: number): Promise<any> {
   //     return this.request(`/${resourceName}/${id}`);
   //   }
 
-  getPath(): any {
-    return this.config;
+  getPath(config: any): any {
+    return config;
     // axios
     //   .get('http://localhost:4000/status', {
     //     headers: {
