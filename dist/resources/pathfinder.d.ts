@@ -1,4 +1,7 @@
 import { Base } from "./base";
 export declare class PathFinder extends Base {
-    getPath(config: any): any;
+    getPath(): any;
+    fetchData(endpoint: string, options?: {
+        cookies?: string;
+    }): Promise<any>;
 }
