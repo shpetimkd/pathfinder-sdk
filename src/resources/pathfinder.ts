@@ -27,8 +27,7 @@ async fetchData(endpoint: string, options?: { cookies?: string }): Promise<any> 
     const response = await axios.get(`${baseUrl}/${endpoint}`, {
       headers: {
         Authorization: `Bearer somebearertoken`,
-        // ...(cookies ? { Cookie: cookies } : {})
-        Cookie: "cookie1=value; cookie2=value; cookie3=value;",
+        Cookie: cookies,
       },
     });
     return response.data;
