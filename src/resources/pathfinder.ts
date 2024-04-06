@@ -2,7 +2,7 @@ import { Base } from "./base";
 const resourceName = "status";
 import axios from "axios";
 
-const baseUrl = 'http://localhost:4000';
+const baseUrl = 'http://localhost:4010';
 export class PathFinder extends Base {
   //   getPostById(id: number): Promise<any> {
   //     return this.request(`/${resourceName}/${id}`);
