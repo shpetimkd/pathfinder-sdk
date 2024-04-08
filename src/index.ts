@@ -1,8 +1,13 @@
+import { AxiosResponse } from 'axios';
 import { PathFinder } from './resources/pathfinder';
 import { Config } from './types';
 
+interface IPathFinder {
+  get<T>(path: string, token?: string): Promise<AxiosResponse<any, any> | Awaited<T>>;
+}
+
 export class Library {
-  pathFinder: any;
+  pathFinder: IPathFinder;
 
   constructor(config: Config) {
     this.pathFinder = new PathFinder(config);

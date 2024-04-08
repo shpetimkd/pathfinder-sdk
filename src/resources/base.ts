@@ -14,7 +14,7 @@ export abstract class Base {
     this.apiKey = config.apiKey;
   }
 
-  protected async get<T>(path: string, token?: any): Promise<AxiosResponse<any, any> | Awaited<T>> {
+  public async get<T>(path: string, token?: string): Promise<AxiosResponse<any, any> | Awaited<T>> {
     const url = `${this.baseUrl}${path}`;
 
     return await axios
