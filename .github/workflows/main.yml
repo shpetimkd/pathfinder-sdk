@@ -12,9 +12,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: '16' # Adjusted to a more common version
       - run: npm ci
       - run: npm run build
+      # Upload dist directory as an artifact
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
 
   publish-gpr:
     needs: build
@@ -26,9 +31,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: '16' # Ensure this matches the version used in build job
           registry-url: https://npm.pkg.github.com/
+      # Download the dist directory artifact
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist/
       - run: npm ci
+      # Ensure package.json, and possibly other needed files, are in the root
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
