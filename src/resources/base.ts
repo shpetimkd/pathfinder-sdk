@@ -1,6 +1,4 @@
-// src/resources/base.ts
-
-import fetch from 'isomorphic-unfetch';
+import axios, { AxiosResponse } from 'axios';
 
 type Config = {
   apiKey: string;
@@ -8,30 +6,30 @@ type Config = {
 };
 
 export abstract class Base {
-  private apiKey: string;
   private baseUrl: string;
+  private apiKey: string;
 
   constructor(config: Config) {
+    this.baseUrl = config.baseUrl;
     this.apiKey = config.apiKey;
-    this.baseUrl = config.baseUrl || 'https://jsonplaceholder.typicode.com';
   }
 
-  protected request<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    const url = `${this.baseUrl}${endpoint}`;
-    const headers = {
-      'Content-Type': 'application/json',
-      'api-key': this.apiKey,
-    };
-    const config = {
-      ...options,
-      headers,
-    };
+  protected async get<T>(path: string, token?: any): Promise<AxiosResponse<any, any> | Awaited<T>> {
+    const url = `${this.baseUrl}${path}`;
 
-    return fetch(url, config).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error(response.statusText);
-    });
+    return await axios
+      .get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': this.apiKey,
+          Cookie: token,
+        },
+      })
+      .then((response) => {
+        if ([200, 201, 204].includes(response.status)) {
+          return response;
+        }
+        throw new Error(response.statusText);
+      });
   }
 }
