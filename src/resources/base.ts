@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { IPayloadType } from '../types';
 
 type Config = {
   apiKey: string;
@@ -17,19 +18,28 @@ export abstract class Base {
   public async get<T>(path: string, token?: string): Promise<AxiosResponse<any, any> | Awaited<T>> {
     const url = `${this.baseUrl}${path}`;
 
-    return await axios
-      .get(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': this.apiKey,
-          Cookie: token,
-        },
-      })
-      .then((response) => {
-        if ([200, 201, 204].includes(response.status)) {
-          return response;
-        }
-        throw new Error(response.statusText);
-      });
+    return await axios.get(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': this.apiKey,
+        Cookie: token,
+      },
+    });
+  }
+
+  public async post<T>(
+    path: string,
+    body: IPayloadType,
+    token?: string
+  ): Promise<AxiosResponse<any, any> | Awaited<T>> {
+    const url = `${this.baseUrl}${path}`;
+
+    return await axios.post(url, body, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': this.apiKey,
+        Cookie: token,
+      },
+    });
   }
 }
