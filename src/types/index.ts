@@ -3,3 +3,8 @@ export interface Config {
   apiKey: string;
   token?: string;
 }
+
+export interface IGetNext {
+  path: string;
+  token: string;
+}
