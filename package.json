@@ -1,6 +1,7 @@
 {
   "name": "@shpetimkd/pathfinder-sdk",
   "publishConfig": {
+    "access": "private",
     "registry": "https://npm.pkg.github.com/@shpetimkd"
   },
   "repository": {
