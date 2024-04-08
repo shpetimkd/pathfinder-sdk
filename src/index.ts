@@ -7,7 +7,7 @@ interface IPathFinder {
   getNext(config: IGetNext): Promise<any>;
 }
 
-export class Library {
+export class PathfinderSDK {
   pathFinder: IPathFinder;
 
   constructor(config: Config) {
