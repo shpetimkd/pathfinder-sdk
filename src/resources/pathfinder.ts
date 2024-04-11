@@ -4,8 +4,8 @@ import { Base } from './base';
 export class PathFinder extends Base {
   async getNext(config: IGetNext): Promise<any> {
     try {
-      const { path, payload, token } = config || {};
-      return await this.post(path, payload, token);
+      const { path, token } = config || {};
+      return await this.get(path, token);
     } catch (error) {
       throw error;
     }

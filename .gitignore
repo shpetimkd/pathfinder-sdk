@@ -3,7 +3,7 @@
 
 # Tests
 /coverage
-# /node_modules
+node_modules
 # /dist
 
 # IDEs and editors
