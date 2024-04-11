@@ -22,7 +22,7 @@ export abstract class Base {
       headers: {
         'Content-Type': 'application/json',
         'api-key': this.apiKey,
-        Cookie: token,
+        cookie: token,
       },
     });
   }
