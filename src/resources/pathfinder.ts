@@ -4,12 +4,7 @@ import { Base } from './base';
 export class PathFinder extends Base {
   async getNext(config: IGetNext): Promise<any> {
     const { path, payload, token } = config || {};
-    const nextPath: any = await this.post(path, payload, token);
-
-    return {
-      response: nextPath,
-      actual: true,
-    };
+    const nextPath: { next: string; path: any[] } = await this.post(path, payload, token);
 
     if (!nextPath.path.length) {
       return {

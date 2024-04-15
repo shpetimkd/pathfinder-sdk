@@ -27,11 +27,7 @@ export abstract class Base {
     });
   }
 
-  public async post<T>(
-    path: string,
-    body: IPayloadType,
-    token?: string
-  ): Promise<AxiosResponse<any, any> | Awaited<T>> {
+  public async post<T>(path: string, body: IPayloadType, token?: string): Promise<T> {
     const url = `${this.baseUrl}${path}`;
 
     try {
@@ -44,7 +40,7 @@ export abstract class Base {
         },
       });
 
-      return response;
+      return response.data;
     } catch (err) {
       throw err;
     }
