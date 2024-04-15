@@ -34,12 +34,18 @@ export abstract class Base {
   ): Promise<AxiosResponse<any, any> | Awaited<T>> {
     const url = `${this.baseUrl}${path}`;
 
-    return await axios.post(url, body, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': this.apiKey,
-        Cookie: token,
-      },
-    });
+    try {
+      const response = await axios.post(url, body, {
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': this.apiKey,
+          Cookie: token,
+        },
+      });
+
+      return response;
+    } catch (err) {
+      throw err;
+    }
   }
 }
