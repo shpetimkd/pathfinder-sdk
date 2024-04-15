@@ -1,14 +1,14 @@
-import { IGetNext } from '../types';
+import { IGetNext, NextActionType, NextPathResponse } from '../types';
 import { Base } from './base';
 
 export class PathFinder extends Base {
   async getNext(config: IGetNext): Promise<any> {
     const { path, payload, token } = config || {};
-    const nextPath: { next: string; path: any[] } = await this.post(path, payload, token);
+    const nextPath: NextPathResponse = await this.post(path, payload, token);
 
     if (!nextPath.path.length) {
       return {
-        nextActionType: 'error',
+        nextActionType: NextActionType.ERROR,
       };
     }
 
@@ -16,13 +16,13 @@ export class PathFinder extends Base {
 
     if (!detailsNextPath) {
       return {
-        nextActionType: 'error',
+        nextActionType: NextActionType.ERROR,
       };
     }
 
     return {
-      nextActionType: 'continue',
-      url: getUrl(detailsNextPath.name, detailsNextPath.next),
+      nextActionType: NextActionType.CONTINUE,
+      url: getUrl(detailsNextPath.name, detailsNextPath.id),
       activityTemplateSlug: detailsNextPath.name,
       activityTemplateGameName: detailsNextPath.name,
       lessonDisplayName: detailsNextPath.name,

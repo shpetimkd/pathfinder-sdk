@@ -7,7 +7,7 @@
   "repository": {
     "url": "git@github.com:shpetimkd/pathfinder-sdk.git"
   },
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "",
   "files": [
     "dist"

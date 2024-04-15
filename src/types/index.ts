@@ -36,3 +36,11 @@ export interface IPayloadType {
   next?: boolean;
   events?: IPathFinderType[];
 }
+
+export enum NextActionType {
+  ERROR = 'error',
+  COMPLETE = 'complete',
+  CONTINUE = 'continue',
+}
+
+export type NextPathResponse = { next: string; path: any[] };
