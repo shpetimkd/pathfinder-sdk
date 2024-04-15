@@ -40,6 +40,7 @@ export abstract class Base {
           'Content-Type': 'application/json',
           'api-key': this.apiKey,
           Cookie: token,
+          Authorization: 'test',
         },
       });
 
