@@ -6,6 +6,11 @@ export class PathFinder extends Base {
     const { path, payload, token } = config || {};
     const nextPath: any = await this.post(path, payload, token);
 
+    return {
+      response: nextPath,
+      actual: true,
+    };
+
     if (!nextPath.path.length) {
       return {
         nextActionType: 'error',
